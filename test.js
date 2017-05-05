@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import PropTypes from 'prop-types'
+
 import { html } from 'js-beautify'
 
 import withThemes, { ThemeTypes } from './src'
@@ -10,13 +12,15 @@ var GrandChild = ({ theme }) => (
   </div>
 )
 
-GrandChild = withThemes(GrandChild, {
+GrandChild.themeTypes = {
   heading: ThemeTypes.className
-}, {
+}
+
+GrandChild = withThemes({
   default: {
     heading: 'base_grand'
   }
-})
+})(GrandChild)
 
 // --
 
@@ -30,27 +34,39 @@ var Child = ({ theme }) => (
 
 Child.foo = 'BAR'
 
-Child = withThemes(Child, {
+Child.themeTypes = {
   heading: ThemeTypes.className,
   body: ThemeTypes.className,
   grand: ThemeTypes.themeOf(GrandChild)
-}, {
+}
+
+Child = withThemes({
   default: {
     heading: 'base_hed',
     body: 'base_body',
     grand: GrandChild.themes.default
   }
-})
+})(Child)
 
 // --
 
-var Test = ({ theme }) => (
+var Test = ({ prop1, theme }) => (
   <div>
     <div className={theme.heading}>FOO</div>
     <Child theme={theme.child1} />
     <Child theme={theme.child2} />
   </div>
 )
+
+Test.propTypes = {
+  prop1: PropTypes.string
+}
+
+Test.themeTypes = {
+  heading: ThemeTypes.className,
+  child1: ThemeTypes.themeOf(Child),
+  child2: ThemeTypes.themeOf(Child)
+}
 
 const THEMES = {
   bla: {
@@ -64,11 +80,7 @@ const THEMES = {
   }
 }
 
-Test = withThemes(Test, {
-  heading: ThemeTypes.className,
-  child1: ThemeTypes.themeOf(Child),
-  child2: ThemeTypes.themeOf(Child)
-}, THEMES, THEMES.other)
+Test = withThemes(THEMES, THEMES.other)(Test)
 
 // --
 
@@ -80,7 +92,7 @@ Test = withThemes(Test, {
 // })
 
 const element = (
-  <Test theme={Test.themes.bla} />
+  <Test prop1={1} theme={Test.themes.blaa} />
 )
 
 console.log(html(ReactDOMServer.renderToStaticMarkup(element), { indent_size: 2 }))

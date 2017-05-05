@@ -99,27 +99,26 @@ export const ThemeTypes = {
  *
  * @param {Object} Component - component to apply themeing
  * @param {Object} themeTypes - theme types definition
- * @param {Object} themes - available themes
+ * @param {Object} [themes] - available themes
+ * @param {Object} [defaultTheme] - default themes
  * @returns {Object} React element
  */
-export default function withThemes (Component, themeTypes, themes = {}, defaultTheme = {}) {
-  function ThemeProvider ({ theme = ThemeProvider.themes.default, ...props }) {
-    return <Component {...props} theme={theme} />
+export default function withThemes (themes = {}, defaultTheme = {}) {
+  return Component => {
+    function ThemeProvider ({ theme = ThemeProvider.themes.default, ...props }) {
+      return <Component {...props} theme={theme} />
+    }
+
+    const themeTypes = Component.themeTypes || {}
+    const themesWithDefault = {
+      default: defaultTheme,
+      ...themes
+    }
+
+    ThemeProvider.themes = _.mapValues(themesWithDefault, theme => decorateTheme(withDefaults(theme, themeTypes)))
+    ThemeProvider.propTypes = propTypesFromThemeTypes(themeTypes)
+    ThemeProvider.WrappedComponent = Component
+
+    return ThemeProvider
   }
-
-  const themesWithDefault = {
-    default: defaultTheme,
-    ...themes
-  }
-
-  ThemeProvider.themes = _.mapValues(themesWithDefault, theme => decorateTheme(withDefaults(theme, themeTypes)))
-
-  ThemeProvider.propTypes = {
-    ...Component.propTypes,
-    ...propTypesFromThemeTypes(themeTypes)
-  }
-
-  ThemeProvider.WrappedComponent = Component
-
-  return ThemeProvider
 }

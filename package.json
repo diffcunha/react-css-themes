@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Theme provider for React components using CSS modules",
   "main": "lib/index.js",
-  "author": "@diffcunha",
+  "author": "@diffcunha @daniel-hayes",
   "license": "ISC",
   "repository": {
     "type": "git",
