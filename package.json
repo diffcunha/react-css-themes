@@ -1,0 +1,40 @@
+{
+  "name": "react-css-themes",
+  "version": "0.1.0",
+  "description": "Theme provider for React components using CSS modules",
+  "main": "lib/index.js",
+  "author": "@diffcunha",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diffcunha/react-css-themes.git"
+  },
+  "scripts": {
+    "prebuild": "rm -rf ./lib",
+    "build": "babel ./src --out-dir ./lib",
+    "lint": "eslint .",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
+    "react": "^15.5.0",
+    "prop-types": "^15.5.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-react": "^6.24.0",
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^10.2.0",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-standard": "^3.0.0"
+  }
+}
