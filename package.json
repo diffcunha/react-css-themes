@@ -1,6 +1,6 @@
 {
   "name": "react-css-themes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Theme provider for React components using CSS modules",
   "main": "lib/index.js",
   "author": "@diffcunha @daniel-hayes",
