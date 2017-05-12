@@ -105,7 +105,9 @@ A new theme derived from the original theme plus the fragment
 
 ```js
 
-let ThemableComponent = ({ theme }) => (<div className={theme.container} />)
+let ThemableComponent = ({ theme }) => (
+  <div className={theme.container} />
+)
 
 ThemableComponent = withThemes({
   light: {
@@ -115,14 +117,16 @@ ThemableComponent = withThemes({
 
 /* HTML output */
 
-renderToStaticMarkup(<ThemableComponent />) // <div class=".container"></div>
+renderToStaticMarkup(<ThemableComponent />)
+// <div class=".container"></div>
 
 // Derived theme
 const theme = ThemableComponent.themes.light.add({
   container: '.foobar'
 })
 
-renderToStaticMarkup(<ThemableComponent theme={theme} />) // <div class=".container .foobar"></div>
+renderToStaticMarkup(<ThemableComponent theme={theme} />)
+// <div class=".container .foobar"></div>
 ```
 
 ## Examples
@@ -195,7 +199,7 @@ import React from 'react'
 import withThemes, { ThemeTypes } from 'react-css-themes'
 
 import themeA from './themeA.css'
-import themeB from './themeA.css'
+import themeB from './themeB.css'
 
 const THEMES = {
   themeA: {

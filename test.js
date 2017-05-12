@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 
 import { html } from 'js-beautify'
 
-import withThemes, { ThemeTypes } from './src'
+import withThemes, {
+  ThemeTypes,
+  propTypesFromThemeTypes
+} from './src'
 
 var GrandChild = ({ theme }) => (
   <div>
@@ -14,6 +17,10 @@ var GrandChild = ({ theme }) => (
 
 GrandChild.themeTypes = {
   heading: ThemeTypes.className
+}
+
+GrandChild.propTypes = {
+  theme: propTypesFromThemeTypes(GrandChild.themeTypes)
 }
 
 GrandChild = withThemes({
@@ -38,6 +45,10 @@ Child.themeTypes = {
   heading: ThemeTypes.className,
   body: ThemeTypes.className,
   grand: ThemeTypes.themeOf(GrandChild)
+}
+
+Child.propTypes = {
+  theme: propTypesFromThemeTypes(Child.themeTypes)
 }
 
 Child = withThemes({
@@ -66,6 +77,10 @@ Test.themeTypes = {
   heading: ThemeTypes.className,
   child1: ThemeTypes.themeOf(Child),
   child2: ThemeTypes.themeOf(Child)
+}
+
+Test.propTypes = {
+  theme: propTypesFromThemeTypes(Test.themeTypes)
 }
 
 const THEMES = {

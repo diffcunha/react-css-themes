@@ -2,5 +2,9 @@
   "extends": [
     "standard",
     "standard-react"
-  ]
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  }
 }
