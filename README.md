@@ -1,4 +1,6 @@
 [![npm version](https://img.shields.io/npm/v/react-css-themes.svg?style=flat-square)](https://www.npmjs.com/package/react-css-themes)
+[![Code Climate](https://codeclimate.com/github/diffcunha/react-css-themes/badges/gpa.svg)](https://codeclimate.com/github/diffcunha/react-css-themes)
+[![Test Coverage](https://codeclimate.com/github/diffcunha/react-css-themes/badges/coverage.svg)](https://codeclimate.com/github/diffcunha/react-css-themes/coverage)
 
 # react-css-themes
 
