@@ -5,6 +5,13 @@
   "main": "lib/index.js",
   "author": "@diffcunha @daniel-hayes",
   "license": "ISC",
+  "keywords": [
+    "react",
+    "css",
+    "modules",
+    "theme",
+    "theming"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/diffcunha/react-css-themes.git"
