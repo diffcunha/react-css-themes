@@ -68,10 +68,10 @@ export default withThemes({ light, dark }, light)(ThemableComponent)
 
 #### `ThemeTypes`
 
-`ThemeTypes` are used to define theme's property types. It's simillar to React `PropTypes`, there are 2 avaiable types:
+`ThemeTypes` are used to define theme's property types. It's simillar to React `PropTypes`, there are 2 available types:
 
 - `ThemeTypes.className`: Defines a property as a className
-- `ThemeTypes.themeOf(ThemableComponent)`: Define a property as a theme of another themeable compoenent
+- `ThemeTypes.themeOf(ThemableComponent)`: Define a property as a theme of another themeable component
 
 ##### Example:
 
@@ -91,7 +91,7 @@ MyComponent.themeTypes = {
 
 ### `Component.themes`
 
-The compoenent will expose a `themes` object property with the themes defined as keys. These themes are set by the compoenent but also expose an API to create derivated themes.
+The component will expose a `themes` object property with the themes defined as keys. These themes are set by the component but also expose an API to create derivated themes.
 
 #### `add(fragment)`
 
